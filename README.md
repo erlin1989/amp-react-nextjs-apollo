@@ -22,22 +22,34 @@ Jest/enzyme used for unit tests
 
 ## Usage
 ### Installation
-```yarn install```
+```
+yarn install
+```
 
 ### Development
-```yarn run dev```
+```
+yarn run dev
+```
 
 ### Production
 First of all, we need to build our Next.js app for production. It will produce an optimized set of code for production.
 
-```yarn run build```
+```
+yarn run build
+```
 
 Then you need to start your Next.js app on a port. That will do server side rendering and serve pages (built with the above command).
 
-```yarn run start```
+```
+yarn run start
+```
 
 ## Testing
-```yarn run test```
+```
+yarn run test
+```
 
 ## Deployment
-```N/A```
+```
+N/A
+```
