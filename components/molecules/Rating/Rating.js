@@ -57,7 +57,9 @@ export function Rating({ rating, numReviews, themeColor }) {
           <AverageRatingText tag="h4">average rating</AverageRatingText>
           <StyledReviewsText tag="h6">
             <StarIcon />
-            <NumReviews>{numReviews}</NumReviews> reviews
+            <span>
+              <NumReviews>{numReviews}</NumReviews> reviews
+            </span>
           </StyledReviewsText>
         </StyledText>
       )}
