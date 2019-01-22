@@ -20,6 +20,8 @@ Eslint/prettier used for formatting/linting
 
 Jest/enzyme used for unit tests
 
+Component structure follows [Atomic design](http://atomicdesign.bradfrost.com/table-of-contents/)
+
 ## Usage
 ### Installation
 ```
@@ -55,4 +57,4 @@ N/A
 ```
 
 ## License
-[MIT](https://github.com/kfrx/amp-react-nextjs-apollo/blob/master/LICENSE.md)
+[MIT](https://github.com/kfrx/amp-react-nextjs-apollo/blob/master/LICENSE)
