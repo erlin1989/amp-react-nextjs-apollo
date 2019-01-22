@@ -11,6 +11,9 @@
   },
   "author": "joshua.yp.huang@gmail.com",
   "license": "ISC",
+  "engines": {
+    "node": ">=10.6.0"
+  },
   "jest": {
     "setupTestFrameworkScriptFile": "<rootDir>/setupTests.js",
     "collectCoverageFrom": [
