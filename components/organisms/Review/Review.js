@@ -47,7 +47,7 @@ export function Review({ rating, author, review, date }) {
 
 Review.propTypes = {
   rating: PropTypes.number.isRequired,
-  review: PropTypes.string.isRequired,
+  review: PropTypes.string,
   author: PropTypes.string.isRequired,
   date: PropTypes.string.isRequired,
 }

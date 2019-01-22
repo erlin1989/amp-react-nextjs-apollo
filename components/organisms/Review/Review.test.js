@@ -16,21 +16,19 @@ describe('Review', () => {
   const date = '2018-02-20T20:53:45.160Z'
 
   it('renders without crashing', () => {
-    shallow(
-      <Review rating={rating} review={review} author={author} date={date} />
-    )
+    shallow(<Review rating={rating} author={author} date={date} />)
   })
 
   it('renders a "StyledReview"', () => {
     const element = shallow(
-      <Review rating={rating} review={review} author={author} date={date} />
+      <Review rating={rating} author={author} date={date} />
     )
     expect(element.find(StyledReview)).toHaveLength(1)
   })
 
   it('passes the "rating" prop to "Rating" component', () => {
     const element = shallow(
-      <Review rating={rating} review={review} author={author} date={date} />
+      <Review rating={rating} author={author} date={date} />
     )
     const expected = rating
     const actual = element.find(Rating).props().rating
@@ -40,7 +38,7 @@ describe('Review', () => {
 
   it('renders the "author" prop', () => {
     const element = shallow(
-      <Review rating={rating} review={review} author={author} date={date} />
+      <Review rating={rating} author={author} date={date} />
     )
     const expected = author
     const actual = element.find(StyledAuthor).props().children
@@ -50,7 +48,7 @@ describe('Review', () => {
 
   it('renders the formatted "date" prop', () => {
     const element = shallow(
-      <Review rating={rating} review={review} author={author} date={date} />
+      <Review rating={rating} author={author} date={date} />
     )
     const expected = 'February 2018'
     const actual = element.find(StyledDate).props().children
