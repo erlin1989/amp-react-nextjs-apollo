@@ -16,7 +16,9 @@ import nl2br from 'react-nl2br'
 import styled from 'styled-components'
 import { CDN_URL } from 'constants/config'
 
-const StyledHeader = styled.header`
+export const StyledHero = styled.header``
+
+export const StyledHeader = styled.header`
   display: grid;
   align-items: center;
   grid-gap: ${({ theme }) => theme.spacing.xs}px 0;
@@ -25,27 +27,32 @@ const StyledHeader = styled.header`
     ${({ theme }) => theme.spacing.md}px;
 `
 
-const StyledAddress = styled(Typography)`
+export const StyledVenueName = styled(Typography)``
+export const StyledAddress = styled(Typography)`
   margin-bottom: ${({ theme }) => theme.spacing.md}px;
 `
 
-const SectionTitle = styled(Typography)`
+export const SectionTitle = styled(Typography)`
   margin: 0 ${({ theme }) => theme.spacing.md}px
     ${({ theme }) => theme.spacing.sm}px ${({ theme }) => theme.spacing.md}px;
 `
 
-const StyledAccordion = styled(Accordion)`
+export const StyledAccordion = styled(Accordion)`
   margin-bottom: ${({ theme }) => theme.spacing.lg}px;
 `
 
-const ServiceCategory = styled.section`
+export const ServiceCategory = styled.section`
   padding: ${({ theme }) => theme.spacing.lg}px 0;
 `
 
-const StyledReviews = styled.div`
+export const StyledReviews = styled.div`
   display: grid;
   grid-gap: ${({ theme }) => theme.spacing.md}px;
 `
+
+export const StyledPopularServices = styled.section``
+
+export const StyledServices = styled.section``
 
 export function VenuePage({
   venueName,
@@ -63,25 +70,32 @@ export function VenuePage({
 }) {
   return (
     <main>
-      {slides.length === 1 && (
-        <Image src={`${CDN_URL}/${slides[0].name}`} width="530" height="353" />
-      )}
-      {slides.length > 1 && (
-        <Carousel width="530" height="353">
-          {slides.map((slide) => {
-            return (
-              <Image
-                key={slide.id}
-                src={`${CDN_URL}/${slide.name}`}
-                width="530"
-                height="353"
-              />
-            )
-          })}
-        </Carousel>
-      )}
+      <StyledHero>
+        {slides.length === 1 && (
+          <Image
+            src={`${CDN_URL}/${slides[0].name}`}
+            width="530"
+            height="353"
+          />
+        )}
+        {slides.length > 1 && (
+          <Carousel width="530" height="353">
+            {slides.map((slide) => {
+              return (
+                <Image
+                  key={slide.id}
+                  src={`${CDN_URL}/${slide.name}`}
+                  width="530"
+                  height="353"
+                />
+              )
+            })}
+          </Carousel>
+        )}
+      </StyledHero>
+
       <StyledHeader>
-        <Typography tag="h1">{venueName}</Typography>
+        <StyledVenueName tag="h1">{venueName}</StyledVenueName>
         <StyledAddress tag="h5">{address}</StyledAddress>
         <Rating rating={rating} numReviews={reviews.length} />
       </StyledHeader>
@@ -146,36 +160,12 @@ export function VenuePage({
       </StyledAccordion>
 
       {popularServices.length && (
-        <ServiceCategory>
-          <SectionTitle tag="h2" textAlign="left">
-            Popular services
-          </SectionTitle>
-          {popularServices.map((service) => {
-            return (
-              <VenueService
-                key={service.id}
-                id={service.id}
-                duration={service.duration}
-                price={service.price}
-                name={service.name}
-                slug={slug}
-                postcode={postcode}
-                suburbSlug={suburbSlug}
-                description={service.description}
-              />
-            )
-          })}
-        </ServiceCategory>
-      )}
-
-      {services.map((serviceHeading) => {
-        return (
-          <ServiceCategory key={serviceHeading.id}>
+        <StyledPopularServices>
+          <ServiceCategory>
             <SectionTitle tag="h2" textAlign="left">
-              {serviceHeading.name}
+              Popular services
             </SectionTitle>
-            {serviceHeading.services.map((service) => {
-              const isPopular = popularServices.some((a) => a.id === service.id)
+            {popularServices.map((service) => {
               return (
                 <VenueService
                   key={service.id}
@@ -187,13 +177,45 @@ export function VenuePage({
                   postcode={postcode}
                   suburbSlug={suburbSlug}
                   description={service.description}
-                  isPopular={isPopular}
                 />
               )
             })}
           </ServiceCategory>
-        )
-      })}
+        </StyledPopularServices>
+      )}
+
+      {services.length && (
+        <StyledServices>
+          {services.map((serviceHeading) => {
+            return (
+              <ServiceCategory key={serviceHeading.id}>
+                <SectionTitle tag="h2" textAlign="left">
+                  {serviceHeading.name}
+                </SectionTitle>
+                {serviceHeading.services.map((service) => {
+                  const isPopular = popularServices.some(
+                    (a) => a.id === service.id
+                  )
+                  return (
+                    <VenueService
+                      key={service.id}
+                      id={service.id}
+                      duration={service.duration}
+                      price={service.price}
+                      name={service.name}
+                      slug={slug}
+                      postcode={postcode}
+                      suburbSlug={suburbSlug}
+                      description={service.description}
+                      isPopular={isPopular}
+                    />
+                  )
+                })}
+              </ServiceCategory>
+            )
+          })}
+        </StyledServices>
+      )}
     </main>
   )
 }
