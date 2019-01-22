@@ -4,6 +4,7 @@ import { ThemeProvider } from 'styled-components'
 import { ApolloProvider } from 'react-apollo'
 import withApolloClient from 'lib/with-apollo-client'
 import theme from 'theme'
+import GlobalStyle from 'theme/base'
 
 export class MyApp extends App {
   static async getInitialProps({ Component, ctx, router }) {
@@ -20,6 +21,7 @@ export class MyApp extends App {
     const { Component, pageProps, query, apolloClient } = this.props
     return (
       <Container>
+        <GlobalStyle />
         <ThemeProvider theme={theme}>
           <ApolloProvider client={apolloClient}>
             <Component {...pageProps} {...query} />

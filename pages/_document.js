@@ -1,7 +1,6 @@
 import React from 'react'
 import Document, { Head, Main } from 'next/document'
 import { ServerStyleSheet } from 'styled-components'
-import GlobalStyle from 'theme/base'
 import { AmpScripts, AmpScriptsManager } from 'react-amphtml/setup'
 
 export default class MyDocument extends Document {
@@ -67,7 +66,6 @@ export default class MyDocument extends Document {
             href="https://fonts.googleapis.com/css?family=Lato:300,400,700"
             rel="stylesheet"
           />
-          <GlobalStyle />
           <style amp-custom="" dangerouslySetInnerHTML={{ __html: css }} />
         </Head>
         <body>
