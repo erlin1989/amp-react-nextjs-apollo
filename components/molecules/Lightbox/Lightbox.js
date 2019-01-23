@@ -19,15 +19,16 @@ export const StyledOverlay = styled.div`
 
 export const StyledBox = styled.div`
   position: relative;
-  height: 95%;
+  max-height: 95vh;
+  height: 300px;
   background-color: ${({ theme }) => theme.palette.tertiary.main};
-  padding: ${({ theme }) => theme.spacing.md}px 0;
+  padding: ${({ theme }) => theme.spacing.lg}px 0;
   border-radius: 12px;
   border-top-right-radius: 0;
 `
 
 export const StyledContent = styled.div`
-  overflow-y: scroll;
+  overflow-y: auto;
   height: 100%;
   padding: 0 ${({ theme }) => theme.spacing.lg}px;
 `
